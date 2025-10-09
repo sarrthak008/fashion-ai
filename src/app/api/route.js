@@ -1,12 +1,9 @@
-import askAi from "../../../lib/askai"
-import connectToDB from "../../../lib/connectdb"
+import responder from "../../../utils/responder.js"
 
-export const GET = async ()=>{
-    try {
-        await askAi()
-        connectToDB()
-        return Response.json({name:"sarthak"})
-    } catch (error) {
-        console.log(error)
-    }
+export const GET = async()=>{
+      try {
+        return responder("Server api is running healthy",null,200,true);
+      } catch (error) {
+        return responder(error.message,null,500,false);
+      }
 }
