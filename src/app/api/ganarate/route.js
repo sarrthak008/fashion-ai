@@ -3,7 +3,8 @@ import user from "../../../../models/user";
 import responder from "../../../../utils/responder"
 import getApiKey from "../../../../utils/ganarateToken";
 import bcrypt from "bcrypt"
-import apikey from "../../../../models/token";
+import apikey from "../../../../models/apikey";
+
 
 export const POST = async (request)=>{
       try {
@@ -42,3 +43,4 @@ export const POST = async (request)=>{
         return responder(error.message,null,404,false)
       }
 }
+
