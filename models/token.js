@@ -1,6 +1,6 @@
 import mongoose, { model, Schema } from "mongoose";
 
-const apiKey =  new Schema({
+const apiKeySchema =  new Schema({
     apiKey:{
         type:String,
         required:true,
@@ -8,5 +8,5 @@ const apiKey =  new Schema({
     }
 },{timestamps:true});
 
-let apikey = mongoose.models.apiKey || model("apikey",apiKey)
+let apikey = mongoose.models.apikey || model("apikey",apiKeySchema)
 export default apikey;
