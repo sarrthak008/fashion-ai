@@ -1,4 +1,4 @@
-import responder from "../../../utils/responder.js"
+import responder from "../../../../utils/responder.js"
 
 export const GET = async()=>{
       try {
@@ -6,4 +6,5 @@ export const GET = async()=>{
       } catch (error) {
         return responder(error.message,null,500,false);
       }
-}
+      
+  }
