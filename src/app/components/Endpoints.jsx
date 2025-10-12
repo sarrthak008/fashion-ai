@@ -1,15 +1,34 @@
-import React from 'react'
+"use client";
+import { useEffect } from "react";
+import { IKContext, IKUpload } from "imagekitio-react";
 
-const Endpoints = () => {
+const ImageUploader = () => {
+  const publicKey = process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY;
+  const urlEndpoint = process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT;
+  const authenticationEndpoint = "/api/imgkit"; // ✅ relative path
+
+
+  useEffect(() => {
+  fetch("/api/imgkit")
+    .then(res => res.json())
+    .then(data => console.log("Auth endpoint working:", data))
+    .catch(err => console.error("Auth endpoint error:", err));
+}, []);
+
+
   return (
-    <div className='w-[90vw] mx-auto h-screen'>
-      <h3 className='text-4xl text-gray-600'>endpoints</h3>
-      <div>
-        
-      </div>
-    </div>
-  )
-}
+    <IKContext
+      publicKey={publicKey}
+      urlEndpoint={urlEndpoint}
+      authenticationEndpoint={authenticationEndpoint}
+    >
+      <IKUpload
+        fileName="my-upload.jpg"
+        onSuccess={(res) => console.log("Upload success:", res)}
+        onError={(err) => console.error("Upload error:", err)}
+      />
+    </IKContext>
+  );
+};
 
-
-export default Endpoints;
+export default ImageUploader;

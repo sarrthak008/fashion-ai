@@ -37,7 +37,7 @@ const Hero = () => {
   return (
     <div className='h-[70vh] md:h-[90vh] w-screen flex items-center justify-center flex-col' >
          <div className=' text-5xl md:text-7xl txt'>Fashion ✘ AI</div>
-         <p className='text-xl md:text-2xl text-gray-500 text-center para'>My personal AI stylist — smart clothing suggestions, built with <span className='text-red-500'>love</span> by <span className='text-sky-500'>Sarthak</span></p>
+         <p className='text-xl md:text-2xl text-gray-400 text-center para font-extralight'>My personal AI stylist — smart clothing suggestions, built with <span className='text-red-500'>love</span> by <span className='text-sky-500'>Sarthak</span></p>
          <div className='mt-6 flex flex-wrap'>
               {
                 hashtags.map((tag,i)=>(

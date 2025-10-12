@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import Hero from './components/Hero'
 import NavBar from './components/NavBar'
-import Endpoints from './components/Endpoints'
+import ImageUploader from './components/Endpoints'
 import FeatherScroll from "scrollfeather"
 
 const page = () => {
@@ -26,7 +26,7 @@ const page = () => {
     <>
       <NavBar />
       <Hero />
-      <Endpoints />
+      <ImageUploader/>
     </>
   )
 }

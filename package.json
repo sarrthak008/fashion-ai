@@ -12,6 +12,8 @@
     "@gsap/react": "^2.1.2",
     "bcrypt": "^6.0.0",
     "gsap": "^3.13.0",
+    "imagekit": "^6.0.0",
+    "imagekitio-react": "^4.3.0",
     "mongoose": "^8.19.1",
     "nanoid": "^5.1.6",
     "next": "15.5.4",
