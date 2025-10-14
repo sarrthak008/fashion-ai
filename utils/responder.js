@@ -11,9 +11,9 @@ export default function responder(
     {
       status,
       headers: {
-        "Access-Control-Allow-Origin": "*", 
+        "Access-Control-Allow-Origin": ["http://localhost:5173","https://vastrraa.vercel.app"], 
         "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Headers": "Content-Type,Authorization",
       },
     }
   );
