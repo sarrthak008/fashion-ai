@@ -13,18 +13,18 @@ export const POST = async (request) => {
       let res = await verifyApiKey(userApiKey)
 
       if (!res) {
-         return responder("invalid api key", null, 404, false);
+         return responder("invalid api key", null, 404, false,request);
       }
 
       if (!userprompt) {
-         return responder("fashion x ai says prompt is missing", null, 404, false);
+         return responder("fashion x ai says prompt is missing", null, 404, false,request);
       }
       let prompt = ganarateSuggestions(userprompt);
       let answer = await askAi(prompt)
-      return responder("load data", answer, 200, true)
+      return responder("load data", answer, 200, true,request)
 
    } catch (error) {
-      return responder(error.message, null, 404, false)
+      return responder(error.message, null, 404, false,request)
    }
 }
 

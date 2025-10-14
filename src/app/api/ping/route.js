@@ -1,8 +1,8 @@
 import responder from "../../../../utils/responder.js"
 
-export const GET = async()=>{
+export const GET = async(req)=>{
       try {
-        return responder("Server api is running healthy",null,200,true);
+        return responder("Server api is running healthy",null,200,true,req);
       } catch (error) {
         return responder(error.message,null,500,false);
       }

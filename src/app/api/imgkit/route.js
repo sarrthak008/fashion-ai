@@ -11,7 +11,7 @@ const imagekit = new ImageKit({
 export async function GET(req) {
   try {
     const result = imagekit.getAuthenticationParameters();
-    return responder("Auth parameters generated", result,200,true);
+    return responder("Auth parameters generated", result,200,true,req);
   } catch (err) {
     console.error("ImageKit Auth Error:", err);
     return responder("imagekit fails try after some time",null,500,false)
@@ -19,13 +19,4 @@ export async function GET(req) {
 }
 
 
-export async function OPTIONS(req) {
-  return new Response(null, {
-    status: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
-  });
-}
+
