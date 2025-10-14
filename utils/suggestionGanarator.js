@@ -19,7 +19,7 @@ Inventory:
 Instructions:
 - Use only the items listed above.
 - Suggest complete outfits (top, bottom, footwear, accessories).
-- Each outfit must be suitable for a marriage event (can be formal or traditional).
+- Each outfit must be suitable for ${user_prompt}.
 - Briefly explain why each outfit works well.
 
 Respond in this format:
