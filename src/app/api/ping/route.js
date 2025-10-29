@@ -13,9 +13,9 @@ function corsHeaders() {
 
 export const GET = async(req)=>{
       try {
-        return responder("Server api is running healthy",null,200,true);
+        return new Response(JSON.stringify({message:"server running healthy",data:null,success:true}))
       } catch (error) {
-        return responder(error.message,null,500,false);
+        return new Response(JSON.stringify({message:error.message,data:null,success:false}))
       }
       
   }
