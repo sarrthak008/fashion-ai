@@ -11,24 +11,23 @@ const imagekit = new ImageKit({
 export async function GET(req) {
   try {
     const result = imagekit.getAuthenticationParameters();
-    return responder("Auth parameters generated", result,200,true,req);
+    return new Response(JSON.stringify({ message: "Success", success: true, data: result }), { status: 200, headers: corsHeaders() });
   } catch (err) {
     console.error("ImageKit Auth Error:", err);
-    return responder("imagekit fails try after some time",null,500,false)
+    return new Response(JSON.stringify({ message: err.message, success: false }), { status: 500, headers: corsHeaders() });
   }
 }
 
-
-export async function OPTIONS(req) {
-  return new Response(null, {
-    status: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
-  });
+function corsHeaders() {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  };
 }
 
 
-
+  export async function OPTIONS() {
+    return new Response(null, { status: 200, headers: corsHeaders() });
+  }
+  
