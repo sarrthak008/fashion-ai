@@ -9,7 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google/genai": "^1.37.0",
+    "@google/generative-ai": "^0.24.1",
     "@gsap/react": "^2.1.2",
+    "axios": "^1.13.2",
     "bcrypt": "^6.0.0",
     "gsap": "^3.13.0",
     "imagekit": "^6.0.0",

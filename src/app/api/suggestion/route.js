@@ -2,7 +2,7 @@ import connectToDB from "../../../../lib/connectdb.js";
 import verifyApiKey from "../../../../utils/verifyapikey.js";
 import askAi from "../../../../lib/askai.js";
 import ganarateSuggestions from "../../../../utils/suggestionGanarator.js";
-
+import generateHairSuggestions from "../../../../utils/hairCraftSuggestions.js";
 
 function corsHeaders() {
   return {
@@ -20,6 +20,7 @@ export async function GET(request) {
     const url = new URL(request.url);
     const userApiKey = url.searchParams.get("apikey");
     const userprompt = url.searchParams.get("userprompt");
+    const ishairCraft = url.searchParams.get("ishairCraft") || 'false';
 
     if (!userApiKey) {
       return new Response(JSON.stringify({ message: "API key missing", success: false }), { status: 400, headers: corsHeaders() });
@@ -33,10 +34,15 @@ export async function GET(request) {
       return new Response(JSON.stringify({ message: "Prompt missing", success: false }), { status: 400, headers: corsHeaders() });
     }
 
-    const prompt = ganarateSuggestions(userprompt);
-    const answer = await askAi(prompt);
-
-    return new Response(JSON.stringify({ message: "Success", success: true, data: answer }), { status: 200, headers: corsHeaders() });
+    if(ishairCraft === 'false'){
+       const prompt = ganarateSuggestions(userprompt);
+       const answer = await askAi(prompt);
+       return new Response(JSON.stringify({ message: "Success", success: true, data: answer }), { status: 200, headers: corsHeaders() });
+    }else{
+        const prompt = generateHairSuggestions(userprompt);
+       const answer = await askAi(prompt);
+       return new Response(JSON.stringify({ message: "Success", success: true, data: answer }), { status: 200, headers: corsHeaders() });
+    }
   } catch (error) {
     return new Response(JSON.stringify({ message: error.message, success: false }), { status: 500, headers: corsHeaders() });
   }
